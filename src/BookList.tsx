@@ -57,7 +57,9 @@ class BookList extends Component<ChildProps<Props>> {
                 ))}
               </div>
             ) : (
-              <div>no books :/</div>
+              <div>
+                no books <span style={{ fontSize: "10px" }}>😕</span>
+              </div>
             )}
           </div>
         )}
