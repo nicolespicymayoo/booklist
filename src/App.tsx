@@ -8,7 +8,10 @@ import { ApolloProvider } from "react-apollo"
 import "./App.scss"
 
 const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql"
+  uri:
+    process.env.NODE_ENV == "production"
+      ? "https ://booklist-api.onrender.com/graphql"
+      : "http://localhost:4000/graphql"
 })
 
 type State = {
