@@ -132,32 +132,34 @@ const Mutation = new GraphQLObjectType({
         let recommendedBook
         let currAuthor = authors.find(obj => obj.name.toLowerCase() === args.author.toLowerCase())
 
-        if (currAuthor == undefined || currAuthor == null) {
-          authorid = newID + 1
-          newID = newID + 1
-          let promise = new Promise((resolve, reject) => {
-            authors.push({ name: args.author, id: authorid })
-            resolve()
-            reject("error")
-          })
-          promise.then(() => {
+        if (args.title && args.genre && args.author) {
+          if (currAuthor == undefined || currAuthor == null) {
+            authorid = newID + 1
+            newID = newID + 1
+            let promise = new Promise((resolve, reject) => {
+              authors.push({ name: args.author, id: authorid })
+              resolve()
+              reject("error")
+            })
+            promise.then(() => {
+              recommendedBook = {
+                title: args.title,
+                genre: args.genre,
+                authorID: authorid
+              }
+              recommendedBooks.push(recommendedBook)
+            })
+          }
+          if (currAuthor !== undefined) {
             recommendedBook = {
               title: args.title,
               genre: args.genre,
-              authorID: authorid
+              authorid: currAuthor.id
             }
             recommendedBooks.push(recommendedBook)
-          })
-        }
-        if (currAuthor !== undefined) {
-          recommendedBook = {
-            title: args.title,
-            genre: args.genre,
-            authorid: currAuthor.id
           }
-          recommendedBooks.push(recommendedBook)
+          return recommendedBooks
         }
-        return recommendedBooks
       }
     },
     deleteRecommendedBook: {
