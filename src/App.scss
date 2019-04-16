@@ -10,23 +10,24 @@
 
 .title {
   font-weight: 300;
-  letter-spacing: .5px;
+  letter-spacing: 0.5px;
   margin-top: 80px;
   margin-bottom: 40px;
 }
 
 .view-toggler-container {
-    margin: 10px;
-    margin-bottom: 20px;
+  margin: 10px;
+  margin-bottom: 20px;
 }
 .view-option {
-  color: rgba(0,0,0,.5);
+  color: rgba(0, 0, 0, 0.4);
   display: inline-block;
   text-transform: uppercase;
-  font-size: .76em;
+  font-size: 0.76em;
   margin: 0 15px;
 }
 .active {
   padding-bottom: 4px;
-  border-bottom: 1px solid rgba(0,0,0,.2);
+  color: black;
+  color: #53b1fd;
 }
